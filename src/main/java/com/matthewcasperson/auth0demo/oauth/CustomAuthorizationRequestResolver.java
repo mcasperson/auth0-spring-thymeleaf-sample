@@ -39,7 +39,7 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
     private OAuth2AuthorizationRequest customizeAuthorizationRequest(OAuth2AuthorizationRequest req) {
         Map<String,Object> extraParams = new HashMap<String,Object>();
         extraParams.putAll(req.getAdditionalParameters()); //VIP note
-        extraParams.put("test", "extra");
+        extraParams.put("audience", "messages");
         System.out.println("here =====================");
         return OAuth2AuthorizationRequest.from(req).additionalParameters(extraParams).build();
     }

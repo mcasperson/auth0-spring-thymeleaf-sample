@@ -41,6 +41,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/oauth_login").permitAll()
                 .anyRequest().authenticated()
             .and()
             .oauth2Login()

@@ -58,7 +58,7 @@ public class ApiProxyController {
         try {
             CloseableHttpClient httpClient = HttpClients.custom().build();
             HttpUriRequest request = RequestBuilder.get()
-                    .setUri("http://localhost:6060/messages/protected-message")
+                    .setUri("http://localhost:6060/api/messages/protected")
                     .setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                     .build();
             CloseableHttpResponse response = httpClient.execute(request);

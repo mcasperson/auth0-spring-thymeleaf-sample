@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon mask-icon" href="https://cdn.auth0.com/website/auth0_favicon.svg" color="#000000"/>
+    <link rel="shortcut icon" href="https://cdn.auth0.com/website/new-homepage/dark-favicon.png"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Learn how to add user authentication to Express.js web apps easily."/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Fira+Code&amp;family=Inter&amp;family=Space+Grotesk&amp;display=optional"/>
+    <link rel="stylesheet" href="/styles.css"/>
+    <title>Auth0 Express Sample</title></head>
+<body>
+<div id="app">
+    <div class="page-layout">
+        <div class="nav-bar__container">
+            <nav class="nav-bar">
+                <div class="nav-bar__brand"><a href="/"><img class="nav-bar__logo"
+                                                             src="https://images.ctfassets.net/23aumh6u8s0i/1UiaijF2PoaHIfcaIMRWYZ/cba84a2df9ba67f48e80aa117d0c78a3/auth0-shield.svg"
+                                                             alt="Auth0 shield logo" width="35.98" height="40"/></a>
+                </div>
+                <div class="nav-bar__tabs"><a class="nav-bar__tab" href="/profile">Profile</a><a
+                        class="nav-bar__tab nav-bar__tab--active" href="/external-api">External API</a></div>
+                <div class="nav-bar__actions">
+                    <button class="button button--primary button--compact" id="logoutButton">Log Out</button>
+                    <script src="logout.js"></script>
+                </div>
+            </nav>
+        </div>
+        <div class="page-layout__content">
+            <div class="content-layout"><h1 class="content__title">External API</h1>
+                <div class="content__body"><p>You can use the buttons below to retrieve the corresponding message from
+                    a local store.<br/><strong>Only authenticated users can access this page</strong>.</p>
+                    <div class="messages-grid">
+                        <div class="messages-grid__header">Messages</div>
+                        <div class="messages-grid__options">
+                            <div class="messages-grid__option" id="public"><span>Public</span></div>
+                            <div class="messages-grid__option" id="protected"><span>Protected</span></div>
+                            <div class="messages-grid__option" id="admin"><span>Admin</span></div>
+                        </div>
+                        <code class="messages-grid__message" id="message"></code></div>
+                </div>
+            </div>
+            <script src="/external-api.js"></script>
+        </div>
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-grid__info">
+                    <div class="footer-info__message"><p class="footer-message__headline"><span>This sample application is brought to you by&nbsp;</span><a
+                            class="footer__hyperlink" href="https://auth0.com/" target="_blank"
+                            rel="noopener noreferrer"><span>Auth0</span></a></p>
+                        <p class="footer-message__description"><a class="footer__hyperlink"
+                                                                  href="https://auth0.com/docs/quickstarts/"
+                                                                  target="_blank" rel="noopener noreferrer"><span>Securely implement authentication using Auth0 on
+any stack and any device&nbsp;</span><u>in less than 10 minutes</u></a></p></div>
+                    <div class="footer-info__button">
+                        <button class="button button--secondary" id="signupButton">Create Free Auth0 Account</button>
+                    </div>
+                    <div class="footer-info__resource-list">
+                        <div class="footer-info__resource-list-item"><a class="footer__hyperlink"
+                                                                        href="https://auth0.com/why-auth0/"
+                                                                        target="_blank" rel="noopener noreferrer"><span>Why Auth0</span></a>
+                        </div>
+                        <div class="footer-info__resource-list-item"><a class="footer__hyperlink"
+                                                                        href="https://auth0.com/docs/get-started"
+                                                                        target="_blank" rel="noopener noreferrer"><span>How It Works</span></a>
+                        </div>
+                        <div class="footer-info__resource-list-item"><a class="footer__hyperlink"
+                                                                        href="https://auth0.com/blog/developers/"
+                                                                        target="_blank" rel="noopener noreferrer"><span>Developer Blog</span></a>
+                        </div>
+                        <div class="footer-info__resource-list-item"><a class="footer__hyperlink"
+                                                                        href="https://auth0.com/contact-us"
+                                                                        target="_blank" rel="noopener noreferrer"><span>Contact an Expert</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-grid__brand">
+                    <div class="footer-brand"><img class="footer-brand__logo"
+                                                   src="https://images.ctfassets.net/23aumh6u8s0i/1UiaijF2PoaHIfcaIMRWYZ/cba84a2df9ba67f48e80aa117d0c78a3/auth0-shield.svg"
+                                                   alt="Auth0" width="20" height="22.22"/><a class="footer__hyperlink"
+                                                                                             href="https://auth0.com/"
+                                                                                             target="_blank"
+                                                                                             rel="noopener noreferrer"><span>Auth0 Inc</span></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="footer.js"></script>
+    </div>
+</div>
+</body>
+</html>

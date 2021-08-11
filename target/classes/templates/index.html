@@ -25,7 +25,8 @@
                                                                                                  href="/external-api">External
                     API</a></div>
                 <div class="nav-bar__actions">
-                    <button class="button button--primary button--compact" id="loginButton">Log In</button>
+                    <button class="button button--primary button--compact" id="loginButton" sec:authorize="isAnonymous()">Log In</button>
+                    <button class="button button--primary button--compact" id="logoutButton" sec:authorize="isAuthenticated()">Log Out</button>
                     <script src="login.js"></script>
                 </div>
             </nav>

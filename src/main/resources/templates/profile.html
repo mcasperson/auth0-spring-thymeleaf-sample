@@ -24,7 +24,8 @@
                 <div class="nav-bar__tabs"><a class="nav-bar__tab nav-bar__tab--active" href="/profile">Profile</a><a
                         class="nav-bar__tab" href="/external-api">External API</a></div>
                 <div class="nav-bar__actions">
-                    <button class="button button--primary button--compact" id="logoutButton">Log Out</button>
+                    <button class="button button--primary button--compact" id="loginButton" sec:authorize="isAnonymous()">Log In</button>
+                    <button class="button button--primary button--compact" id="logoutButton" sec:authorize="isAuthenticated()">Log Out</button>
                     <script src="logout.js"></script>
                 </div>
             </nav>

@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 @Configuration
@@ -23,6 +24,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
             .and()
                 .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
                     .logoutSuccessUrl("/")
@@ -30,6 +32,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
             .and()
                 .oauth2Login()
+                    .loginPage("/login").permitAll() // https://docs.spring.io/spring-security/site/docs/4.1.3.RELEASE/guides/html5/form-javaconfig.html
                     .authorizationEndpoint()
                     .authorizationRequestResolver(
                             new CustomAuthorizationRequestResolver(

@@ -65,7 +65,7 @@ public class ApiProxyController {
             System.out.println(bodyAsString);
             return bodyAsString;
         } catch (Exception e) {
-            return e.toString();
+            return "{\"message\": \"" + e + "\"}";
         }
     }
 }

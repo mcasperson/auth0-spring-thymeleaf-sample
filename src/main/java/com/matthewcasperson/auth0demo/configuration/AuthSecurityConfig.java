@@ -22,10 +22,17 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/*.js", "/*.css").permitAll()
                 .anyRequest().authenticated()
             .and()
-            .oauth2Login()
-                .authorizationEndpoint()
-                .authorizationRequestResolver(
-                        new CustomAuthorizationRequestResolver(
-                                clientRegistrationRepository, "/oauth2/authorization"));
+                .logout()
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .logoutSuccessUrl("/")
+                    .deleteCookies("JSESSIONID")
+                    .permitAll()
+            .and()
+                .oauth2Login()
+                    .authorizationEndpoint()
+                    .authorizationRequestResolver(
+                            new CustomAuthorizationRequestResolver(
+                                    clientRegistrationRepository, "/oauth2/authorization"));
     }
 }

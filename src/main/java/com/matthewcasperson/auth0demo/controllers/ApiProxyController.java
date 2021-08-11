@@ -15,8 +15,9 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.http.HttpClient;
 
@@ -30,8 +31,15 @@ public class ApiProxyController {
         this.clientService = clientService;
     }
 
-    @GetMapping("/messages/protected-message")
-    public String protectedMessage() {
+    @RequestMapping(value = "/api/messages/{message}", method = RequestMethod.GET)
+    @ResponseBody
+    public String proxyMessageRequest(HttpServletResponse response, @PathVariable("message") String message) {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        return accessAPI(message);
+    }
+
+    private String getAccessToken() {
         Authentication authentication =
                 SecurityContextHolder
                         .getContext()
@@ -45,28 +53,22 @@ public class ApiProxyController {
                         oauthToken.getAuthorizedClientRegistrationId(),
                         oauthToken.getName());
 
-        String accessToken = client.getAccessToken().getTokenValue();
-
-        System.out.println(accessToken);
-
-        accessAPI(accessToken);
-
-        return "index";
+        return client.getAccessToken().getTokenValue();
     }
 
-    private void accessAPI(String accessToken) {
+    private String accessAPI(String message) {
         try {
             CloseableHttpClient httpClient = HttpClients.custom().build();
             HttpUriRequest request = RequestBuilder.get()
-                    .setUri("http://localhost:6060/api/messages/protected")
-                    .setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+                    .setUri("http://localhost:6060/api/messages/" + message)
+                    .setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + getAccessToken())
                     .build();
             CloseableHttpResponse response = httpClient.execute(request);
             String bodyAsString = EntityUtils.toString(response.getEntity());
             System.out.println(bodyAsString);
+            return bodyAsString;
         } catch (Exception e) {
-            e.printStackTrace();
+            return e.toString();
         }
     }
-
 }

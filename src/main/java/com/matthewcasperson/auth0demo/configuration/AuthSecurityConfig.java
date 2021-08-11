@@ -19,7 +19,7 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/", "/*.js", "/*.css").permitAll()
                 .anyRequest().authenticated()
             .and()
             .oauth2Login()

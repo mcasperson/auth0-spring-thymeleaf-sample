@@ -36,7 +36,7 @@ public class ProfileController {
         try {
             return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(attributes);
         } catch (JsonProcessingException e) {
-            return e.toString();
+            return "{\"message\":\"" + e.toString() + "\"};
         }
     }
 }

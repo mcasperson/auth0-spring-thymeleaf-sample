@@ -49,13 +49,15 @@ public class ApiProxyController {
 
     private String accessAPI(String message) {
         try {
-            CloseableHttpClient httpClient = HttpClients.custom().build();
-            HttpUriRequest request = RequestBuilder.get()
-                    .setUri("http://" + System.getenv().get("EXTERNALAPI") + "/api/messages/" + message)
-                    .setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + getAccessToken())
-                    .build();
-            CloseableHttpResponse response = httpClient.execute(request);
-            return EntityUtils.toString(response.getEntity());
+            try (CloseableHttpClient httpClient = HttpClients.custom().build()) {
+                HttpUriRequest request = RequestBuilder.get()
+                        .setUri("http://" + System.getenv().get("EXTERNALAPI") + "/api/messages/" + message)
+                        .setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + getAccessToken())
+                        .build();
+                try (CloseableHttpResponse response = httpClient.execute(request)) {
+                    return EntityUtils.toString(response.getEntity());
+                }
+            }
         } catch (Exception e) {
             return "{\"message\": \"" + e + "\"}";
         }

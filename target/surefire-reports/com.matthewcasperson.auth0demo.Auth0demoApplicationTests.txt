@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.matthewcasperson.auth0demo.Auth0demoApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.824 s - in com.matthewcasperson.auth0demo.Auth0demoApplicationTests

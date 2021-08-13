@@ -11,3 +11,5 @@ To build and execute the application, run:
 ```
 ./mvnw spring-boot:run
 ```
+
+An example external API can be found at https://github.com/mcasperson/Auth0Ktor.

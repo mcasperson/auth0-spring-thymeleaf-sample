@@ -16,8 +16,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
+
+    @Autowired
+    public AuthSecurityConfig(ClientRegistrationRepository clientRegistrationRepository) {
+        this.clientRegistrationRepository = clientRegistrationRepository;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

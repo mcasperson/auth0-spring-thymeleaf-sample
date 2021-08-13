@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ExternalApiController {
     @GetMapping("/external-api")
-    public String profile() {
+    public String externalApi() {
         return "externalapi";
     }
 }

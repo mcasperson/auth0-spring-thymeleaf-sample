@@ -28,4 +28,20 @@ $env:EXTERNALAPI="localhost:6060"
 .\mvnw spring-boot:run
 ```
 
-An example external API can be found at https://github.com/mcasperson/Auth0Ktor.
+An example external API can be found at https://github.com/mcasperson/Auth0Ktor. Run the external API with the following bash:
+
+```bash
+export AUDIENCE=AudienceGoesHere
+export ISSUER=https://ApplicationDomainGoesHere
+./gradlew installDist
+./build/install/com.matthewcasperson.ktor-demo/bin/com.matthewcasperson.ktor-demo
+```
+
+Or the following PowerShell:
+
+```powershell
+$env:AUDIENCE="AudienceGoesHere"
+$env:ISSUER="https://ApplicationDomainGoesHere"
+.\gradlew installDist
+.\build\install\com.matthewcasperson.ktor-demo\bin\com.matthewcasperson.ktor-demo.bat
+```

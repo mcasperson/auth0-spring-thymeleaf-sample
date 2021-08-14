@@ -41,7 +41,7 @@ Or the following PowerShell:
 
 ```powershell
 $env:AUDIENCE="AudienceGoesHere"
-$env:ISSUER="https://ApplicationDomainGoesHere"
+$env:ISSUER="https://ApplicationDomainGoesHere/"
 .\gradlew installDist
 .\build\install\com.matthewcasperson.ktor-demo\bin\com.matthewcasperson.ktor-demo.bat
 ```
